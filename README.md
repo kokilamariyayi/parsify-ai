@@ -60,9 +60,9 @@ Inspired by **Apple Intelligence** and its on-device document extraction pipelin
 
 <div align="center">
 
-| Extraction History | Dashboard |
+| Home Page | Extraction History |
 |:---:|:---:|
-| ![Extraction History](docs/history.jpeg) | ![Dashboard](docs/tb.jpeg) |
+| ![Home Page](docs/tb.jpeg) | ![Extraction History](docs/history.jpeg) |
 
 </div>
 
@@ -71,6 +71,8 @@ Inspired by **Apple Intelligence** and its on-device document extraction pipelin
 ## Demo Video
 
 <div align="center">
+
+**Parsify AI Demo Video**
 
 <video width="600" controls>
   <source src="docs/parsify.mp4" type="video/mp4">
