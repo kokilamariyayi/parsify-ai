@@ -1,0 +1,41 @@
+================================================================================
+                         ACME TECHNOLOGIES INC.
+                         123 Innovation Drive, Suite 400
+                         San Francisco, CA 94105
+                         Phone: (415) 555-0192 | billing@acmetech.com
+================================================================================
+
+                              INVOICE
+
+Invoice Number:    INV-2024-78432
+Invoice Date:      2024-03-15
+Due Date:          2024-04-14
+Payment Terms:     Net 30
+
+BILL TO:
+Global Retail Partners LLC
+789 Commerce Boulevard
+Chicago, IL 60601
+Attn: Accounts Payable
+
+--------------------------------------------------------------------------------
+DESCRIPTION                          QTY    UNIT PRICE      TOTAL
+--------------------------------------------------------------------------------
+Cloud Infrastructure - Monthly       1      $2,450.00       $2,450.00
+API Gateway Premium License          3      $299.00         $897.00
+Professional Services (40 hrs)       40     $175.00         $7,000.00
+Data Analytics Dashboard Setup       1      $1,200.00       $1,200.00
+--------------------------------------------------------------------------------
+
+                                              Subtotal:      $11,547.00
+                                              Tax (8.5%):    $981.50
+                                              TOTAL:         $12,528.50
+
+Currency: USD
+
+Please remit payment to:
+Bank: First National Bank
+Account: ACME Technologies Inc.
+Routing: 121000358 | Account: 8847291035
+
+Thank you for your business!

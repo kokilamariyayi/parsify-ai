@@ -1,0 +1,49 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+This Mutual Non-Disclosure Agreement ("Agreement") is entered into as of
+January 15, 2024 ("Effective Date") and shall remain in effect until
+January 14, 2027 ("Expiry Date"), unless terminated earlier in accordance
+with Section 8 herein.
+
+PARTIES:
+
+1. NovaStream Analytics, Inc., a Delaware corporation ("Disclosing Party")
+   Address: 500 Market Street, San Jose, CA 95113
+   Role: Technology Provider
+
+2. Horizon Ventures Capital, LP ("Receiving Party")
+   Address: 200 Park Avenue, New York, NY 10166
+   Role: Investment Partner
+
+GOVERNING LAW: This Agreement shall be governed by and construed in
+accordance with the laws of the State of California, without regard to
+conflict of law principles.
+
+KEY OBLIGATIONS:
+
+- Each party shall maintain the confidentiality of all Proprietary
+  Information received from the other party.
+- Neither party shall disclose Proprietary Information to third parties
+  without prior written consent.
+- Each party shall use Proprietary Information solely for evaluating a
+  potential business relationship.
+- Upon termination, each party shall return or destroy all Proprietary
+  Information within 30 days.
+
+PENALTY CLAUSES:
+
+- Unauthorized disclosure shall result in liquidated damages of $250,000
+  per incident.
+- Injunctive relief may be sought without posting bond for any breach.
+- The breaching party shall reimburse all legal fees incurred by the
+  non-breaching party.
+
+SIGNATURES:
+
+/s/ Elena Rodriguez                    Date: January 15, 2024
+Elena Rodriguez, CEO
+NovaStream Analytics, Inc.
+
+/s/ Marcus Chen                        Date: January 16, 2024
+Marcus Chen, Managing Partner
+Horizon Ventures Capital, LP

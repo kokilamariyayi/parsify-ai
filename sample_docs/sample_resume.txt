@@ -1,0 +1,44 @@
+SARAH MITCHELL
+Senior Software Engineer
+
+Email: sarah.mitchell@email.com
+Phone: (512) 555-0147
+Location: Austin, TX
+
+PROFESSIONAL SUMMARY
+Results-driven software engineer with 8+ years of experience building
+scalable web applications and distributed systems. Expert in Python,
+React, and cloud infrastructure.
+
+SKILLS
+Python, JavaScript, TypeScript, React, FastAPI, Node.js, PostgreSQL,
+Redis, AWS, Docker, Kubernetes, Git, Agile/Scrum, System Design
+
+EXPERIENCE
+
+Senior Software Engineer | TechFlow Solutions | Jan 2021 - Present
+- Led migration of monolithic backend to microservices architecture
+- Reduced API latency by 40% through caching and query optimization
+- Mentored team of 5 junior developers
+
+Software Engineer | DataPulse Inc. | Jun 2018 - Dec 2020
+- Built real-time analytics dashboard serving 50K daily users
+- Implemented CI/CD pipelines reducing deployment time by 60%
+- Collaborated with product team on feature prioritization
+
+Junior Developer | StartupLab | Aug 2016 - May 2018
+- Developed REST APIs and frontend components for SaaS platform
+- Wrote unit and integration tests achieving 85% code coverage
+
+EDUCATION
+
+Master of Science, Computer Science
+University of Texas at Austin | 2016
+
+Bachelor of Science, Software Engineering
+Texas A&M University | 2014
+
+CERTIFICATIONS
+- AWS Certified Solutions Architect - Associate (2023)
+- Certified Kubernetes Administrator (2022)
+- Google Professional Cloud Developer (2021)
