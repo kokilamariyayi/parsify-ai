@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { Loader2, Sparkles, Upload, FileAudio, X } from "lucide-react";
 import { toast } from "sonner";
-import { API_URL, formatBytes } from "../lib/utils";
+import { formatBytes } from "../lib/utils";
+import { apiFetch } from "../lib/api";
 
 const MAX_UPLOAD_SIZE = 25 * 1024 * 1024;
 const ALLOWED_EXTENSIONS = [".mp3", ".wav", ".webm", ".ogg", ".m4a"];
@@ -19,17 +20,11 @@ export default function VoiceInput({ onExtractStart, onExtractComplete, onExtrac
     setState("processing");
 
     try {
-      const res = await fetch(`${API_URL}/transcribe`, {
+      const res = await apiFetch("/transcribe", {
         method: "POST",
         body: formData,
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(
-          data.detail || data.error || "Transcription failed, please use text input instead"
-        );
-      }
+      }, 1);
+      const data = res;
 
       if (!data.transcribed_text?.trim()) {
         throw new Error("No speech detected, please try again");
@@ -101,18 +96,13 @@ export default function VoiceInput({ onExtractStart, onExtractComplete, onExtrac
     onExtractStart?.();
 
     try {
-      const res = await fetch(`${API_URL}/extract-text`, {
+      const data = await apiFetch("/extract-text", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      });
+      }, 1);
 
-      const data = await res.json();
       console.log("POST /extract-text response:", data);
-
-      if (!res.ok) {
-        throw new Error(data.detail || data.error || "Extraction failed");
-      }
 
       onExtractComplete?.(data, transcribedText);
     } catch (err) {

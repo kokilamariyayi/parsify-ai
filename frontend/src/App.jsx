@@ -12,7 +12,7 @@ import UploadZone from "./components/UploadZone";
 import VoiceInput from "./components/VoiceInput";
 import ResultCard from "./components/ResultCard";
 import ExtractionHistory from "./components/ExtractionHistory";
-import { API_URL } from "./lib/utils";
+import { apiFetch } from "./lib/api";
 import { saveExtractionToHistory } from "./lib/history";
 
 function SkeletonCard() {
@@ -89,15 +89,10 @@ export default function App() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const res = await fetch(`${API_URL}/extract`, {
+      const data = await apiFetch("/extract", {
         method: "POST",
         body: formData,
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.detail || data.error || "Extraction failed");
-      }
+      }, 1);
 
       setResult(data);
       persistHistory({
@@ -132,16 +127,11 @@ export default function App() {
     setLastRequest({ type: "text", text });
 
     try {
-      const res = await fetch(`${API_URL}/extract-text`, {
+      const data = await apiFetch("/extract-text", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.detail || data.error || "Extraction failed");
-      }
+      }, 1);
 
       setResult(data);
       persistHistory({
