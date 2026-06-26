@@ -58,28 +58,15 @@ Inspired by **Apple Intelligence** and its on-device document extraction pipelin
 
 ## Screenshots
 
-<div align="center">
-
 | Home Page | Extraction History |
 |:---:|:---:|
 | ![Home Page](docs/tb.jpeg) | ![Extraction History](docs/history.jpeg) |
-
-</div>
 
 ---
 
 ## Demo Video
 
-<div align="center">
-
-**Parsify AI Demo Video**
-
-<video width="600" controls>
-  <source src="docs/parsify.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
-</div>
+[📹 Watch Demo Video](docs/parsify.mp4)
 
 ---
 
