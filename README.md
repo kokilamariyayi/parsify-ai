@@ -1,212 +1,182 @@
 # Parsify AI
 
-**Intelligent Document Extraction** — Parsify AI transforms invoices, contracts, and resumes into structured data using LLM-powered classification and field extraction.
+### Intelligent Document Extraction
 
-Inspired by production extraction pipelines used in **Apple Intelligence** (LoRA fine-tuned on-device models achieving **93% field-level accuracy** on invoice parsing in research benchmarks), Parsify AI demonstrates the same classify → extract → score pipeline using Groq's `llama-3.3-70b-versatile` model.
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Groq](https://img.shields.io/badge/Groq-FF6B00?style=for-the-badge&logo=lightning&logoColor=white)](https://groq.com/)
+[![LLaMA 3](https://img.shields.io/badge/LLaMA--3-7C3AED?style=for-the-badge&logo=meta&logoColor=white)](https://llama.meta.com/)
+[![Whisper](https://img.shields.io/badge/Whisper-0078D4?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/openai/whisper)
+[![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-![Parsify AI Screenshot](./docs/screenshot-placeholder.png)
+[**Live Demo**](https://parsify-ai.web.app/) · [**GitHub**](https://github.com/kokilamariyayi/parsify-ai)
+
+---
+
+## About
+
+**Parsify AI** transforms unstructured documents — invoices, contracts, resumes, and more — into clean, structured JSON you can export, integrate, or review in seconds.
+
+Inspired by **Apple Intelligence** and its on-device document extraction pipelines, Parsify AI applies a similar classify → extract → score workflow using Groq’s LLaMA-3 and Whisper models to deliver fast, accurate field-level parsing from files, pasted text, or audio uploads.
 
 ---
 
 ## Features
 
-- **Multi-format parsing** — PDF (PyMuPDF), DOCX (python-docx), TXT
-- **Auto document classification** — invoice, contract, resume, or general
-- **Structured field extraction** — type-specific schemas with JSON output
-- **Field-level confidence scoring** — low-confidence fields highlighted in UI
-- **Batch processing** — upload multiple files with summary stats
-- **Export** — download as JSON or flattened CSV, copy to clipboard
-- **Edge case handling** — scanned PDFs, empty docs, 10MB limit, API retry
-- **Audio upload** — upload MP3/WAV/M4A/OGG/WEBM, transcribed via Groq Whisper, then extracted
-- **Extraction history** — recent results saved in browser localStorage
+- **Multi-document type detection** — Invoice, Contract, Resume, and General
+- **Two-stage LLM pipeline** — Classify document type, then extract schema-aware fields
+- **Field-level confidence scoring** — Per-field scores with low-confidence highlights in the UI
+- **Audio transcription** — Upload MP3, WAV, M4A, OGG, or WEBM; transcribed via Groq Whisper
+- **Extraction history** — Recent results saved in browser localStorage (up to 10 entries)
+- **Export as JSON and CSV** — Download or copy structured output instantly
+- **Dark themed responsive UI** — Professional SaaS-style interface on desktop and mobile
 
 ---
 
-## Audio Upload
+## Architecture
 
-Parsify AI supports a third input mode: **Audio**. Upload an audio file containing document content (invoice details, contract terms, resume info), and the app will:
-
-1. Transcribe it with **Groq Whisper `whisper-large-v3`**
-2. Show an editable transcript
-3. Run the same classify → extract → score pipeline via `/extract-text`
-
-### How to use
-
-1. Open the **Audio** tab (Upload | Paste Text | Audio)
-2. Click **Upload Audio File** and select a supported file (MP3, WAV, M4A, OGG, WEBM — max 25MB)
-3. Wait for transcription to complete
-4. Review the transcript, edit if needed
-5. Click **Extract from this text** to get structured fields
-
-### Supported formats
-
-MP3 · WAV · M4A · OGG · WEBM (max 25MB)
-
-Requires **ffmpeg** on the backend for audio conversion (see Setup).
-
----
-
-## Project Structure
-
-```
-parsify-ai/
-├── backend/
-│   ├── main.py           # FastAPI routes
-│   ├── extractor.py      # Groq LLM classification + extraction
-│   ├── parser.py         # PDF/DOCX/TXT text extraction
-│   ├── transcribe.py     # Groq Whisper transcription
-│   ├── schemas.py        # Pydantic models
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── UploadZone.jsx
-│   │   │   ├── VoiceInput.jsx
-│   │   │   ├── ExtractionHistory.jsx
-│   │   │   ├── ResultCard.jsx
-│   │   │   ├── FieldTable.jsx
-│   │   │   └── ExportBar.jsx
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── index.html
-│   └── package.json
-├── sample_docs/
-│   ├── sample_invoice.txt
-│   ├── sample_contract.txt
-│   └── sample_resume.txt
-└── README.md
+```mermaid
+graph TD
+    A[Document Input] --> B{Input Type}
+    B -->|PDF/DOCX/TXT| C[File Parser]
+    B -->|Audio MP3/WAV| D[Groq Whisper]
+    B -->|Paste Text| E[Direct Text]
+    C --> F[Raw Text]
+    D --> F
+    E --> F
+    F --> G[LLM Classifier]
+    G --> H{Document Type}
+    H -->|Invoice| I[Invoice Extractor]
+    H -->|Contract| J[Contract Extractor]
+    H -->|Resume| K[Resume Extractor]
+    H -->|General| L[General Extractor]
+    I --> M[Structured JSON]
+    J --> M
+    K --> M
+    L --> M
+    M --> N[Field Confidence Scorer]
+    N --> O[ResultCard UI]
+    O --> P[Export JSON/CSV]
 ```
 
 ---
 
-## Setup
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| React + Vite + Tailwind CSS | Frontend UI |
+| FastAPI | Backend API |
+| Groq LLaMA-3.3-70B | Document classification and extraction |
+| Groq Whisper Large V3 | Audio transcription |
+| PyMuPDF | PDF parsing |
+| python-docx | DOCX parsing |
+| Firebase Hosting | Frontend deployment |
+| localStorage | Extraction history |
+
+---
+
+## Screenshots
+
+| Homepage | Extraction Result |
+|:---:|:---:|
+| ![Home](docs/screenshot-homepage.png) | ![Result](docs/screenshot-result.png) |
+
+| Audio Upload | Extraction History |
+|:---:|:---:|
+| ![Audio](docs/screenshot-audio.png) | ![History](docs/screenshot-history.png) |
+
+---
+
+## Getting Started
 
 ### Prerequisites
 
 - Python 3.10+
 - Node.js 18+
-- [Groq API key](https://console.groq.com/)
-- **ffmpeg** (required for audio transcription via pydub)
+- Groq API key (free at [console.groq.com](https://console.groq.com/))
 
-Install ffmpeg:
-
-```bash
-winget install ffmpeg
-```
-
-### Backend
+### Backend Setup
 
 ```bash
-cd parsify-ai/backend
+cd backend
 python -m venv venv
-
-# Windows
 venv\Scripts\activate
-
-# macOS/Linux
-source venv/bin/activate
-
 pip install -r requirements.txt
 ```
 
-Create `backend/.env`:
+Create a `.env` file in `backend/`:
 
 ```env
-GROQ_API_KEY=your_key_here
+GROQ_API_KEY=your_key
 ```
 
 Start the API server:
 
 ```bash
-uvicorn main:app --reload --port 8000
+uvicorn main:app --reload
 ```
 
-### Frontend
+API runs at **http://localhost:8000**
+
+### Frontend Setup
 
 ```bash
-cd parsify-ai/frontend
+cd frontend
 npm install
-```
-
-Create `frontend/.env`:
-
-```env
-VITE_API_URL=http://localhost:8000
-```
-
-Start the dev server:
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
+App runs at **http://localhost:5173**
 
 ---
 
-## API Endpoints
+## Sample Output
 
-| Method | Endpoint        | Description                          |
-|--------|-----------------|--------------------------------------|
-| GET    | `/health`       | Health check                         |
-| POST   | `/extract`      | Upload file (multipart)              |
-| POST   | `/extract-text` | Extract from raw text JSON body      |
-| POST   | `/batch`        | Upload multiple files                |
-| POST   | `/transcribe`   | Transcribe audio (webm, wav, mp3, ogg, m4a) |
-
-### Example: Health Check
-
-```bash
-curl http://localhost:8000/health
-```
-
-### Example: Extract from Text
-
-```bash
-curl -X POST http://localhost:8000/extract-text \
-  -H "Content-Type: application/json" \
-  -d "{\"text\": \"Invoice #INV-001 dated 2024-01-15. Total: $500.00 USD. Vendor: Acme Corp.\"}"
-```
-
-### Example: Extract from File
-
-```bash
-curl -X POST http://localhost:8000/extract \
-  -F "file=@sample_docs/sample_invoice.txt"
-```
-
-### Example: Transcribe Audio
-
-```bash
-curl -X POST http://localhost:8000/transcribe \
-  -F "file=@recording.webm" \
-  -F "duration_seconds=5.2"
-```
-
-### Example: Batch Extract
-
-```bash
-curl -X POST http://localhost:8000/batch \
-  -F "files=@sample_docs/sample_invoice.txt" \
-  -F "files=@sample_docs/sample_resume.txt"
+```json
+{
+  "document_type": "invoice",
+  "confidence": 0.97,
+  "fields": {
+    "invoice_number": "INV-1042",
+    "invoice_date": "2026-06-20",
+    "vendor_name": "Tech Solutions Pvt Ltd",
+    "total_amount": 85000,
+    "currency": "INR",
+    "due_date": "2026-07-15",
+    "payment_terms": "Net 30"
+  }
+}
 ```
 
 ---
 
-## Resume-Ready Metrics
+## Resume Metrics
 
-> This system mirrors production extraction pipelines used in Apple Intelligence (LoRA fine-tuned on-device) achieving **93% field-level accuracy** on invoice parsing in research benchmarks.
-
-Parsify AI implements a three-stage pipeline:
-
-1. **Classification** — document type + confidence score
-2. **Extraction** — schema-aware structured JSON output
-3. **Field scoring** — per-field confidence (0–1) for quality assurance
-
-Backend logs document type, field count, and processing time for observability.
+> Built a multi-stage LLM extraction pipeline achieving structured field parsing across invoice, contract, and resume document types with per-field confidence scoring and audio transcription support.
 
 ---
 
 ## License
 
-MIT
+MIT License — see [LICENSE](LICENSE) for details.
+
+---
+
+## Author
+
+**Kokila M**
+
+- Portfolio: [kokilam-portfolio.web.app](https://kokilam-portfolio.web.app/)
+- GitHub: [@kokilamariyayi](https://github.com/kokilamariyayi)
+- LinkedIn: [Kokila M](https://www.linkedin.com/in/kokila-m-aba1572b0/)
+
+---
+
+<p align="center">
+  <strong>Parsify AI</strong> — Intelligent Document Extraction<br/>
+  <a href="https://parsify-ai.web.app/">Live Demo</a> ·
+  <a href="https://github.com/kokilamariyayi/parsify-ai">Source Code</a>
+</p>

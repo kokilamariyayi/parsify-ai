@@ -5,7 +5,7 @@ export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
-export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+export const API_URL = import.meta.env.VITE_API_URL || "https://parsify-ai.onrender.com";
 
 export const DOC_TYPE_COLORS = {
   invoice: "bg-blue-500/20 text-blue-400 border-blue-500/30",
