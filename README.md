@@ -66,7 +66,9 @@ Inspired by **Apple Intelligence** and its on-device document extraction pipelin
 
 ## Demo Video
 
-[📹 Watch Demo Video](docs/parsify.mp4)
+<a href="docs/parsify.mp4">
+  <img alt="Parsify AI Demo Video" src="https://img.shields.io/badge/▶-Watch_Demo_Video-FF0000?style=for-the-badge" />
+</a>
 
 ---
 
