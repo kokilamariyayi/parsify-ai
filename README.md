@@ -58,13 +58,15 @@ Inspired by **Apple Intelligence** and its on-device document extraction pipelin
 
 ## Screenshots
 
-| Homepage | Extraction Result |
+| Extraction History | Dashboard |
 |:---:|:---:|
-| ![Home](docs/screenshot-homepage.png) | ![Result](docs/screenshot-result.png) |
+| ![History](docs/history.jpeg) | ![Dashboard](docs/tb.jpeg) |
 
-| Audio Upload | Extraction History |
-|:---:|:---:|
-| ![Audio](docs/screenshot-audio.png) | ![History](docs/screenshot-history.png) |
+---
+
+## Demo Video
+
+[![Parsify AI Demo](docs/parsify.mp4)](docs/parsify.mp4)
 
 ---
 
