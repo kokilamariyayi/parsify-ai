@@ -12,7 +12,7 @@ load_dotenv()
 
 logger = logging.getLogger("parseiq")
 
-MODEL = "llama-3.3-70b-versatile"
+MODEL = "llama3-8b-8192"
 PREVIEW_LENGTH = 500
 
 CLASSIFICATION_PROMPT = """You are a document classifier. Given the following text, classify it as one of: invoice, contract, resume, general.
