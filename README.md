@@ -37,29 +37,7 @@ Inspired by **Apple Intelligence** and its on-device document extraction pipelin
 
 ## Architecture
 
-```mermaid
-graph TD
-    A[Document Input] --> B{Input Type}
-    B -->|PDF/DOCX/TXT| C[File Parser]
-    B -->|Audio MP3/WAV| D[Groq Whisper]
-    B -->|Paste Text| E[Direct Text]
-    C --> F[Raw Text]
-    D --> F
-    E --> F
-    F --> G[LLM Classifier]
-    G --> H{Document Type}
-    H -->|Invoice| I[Invoice Extractor]
-    H -->|Contract| J[Contract Extractor]
-    H -->|Resume| K[Resume Extractor]
-    H -->|General| L[General Extractor]
-    I --> M[Structured JSON]
-    J --> M
-    K --> M
-    L --> M
-    M --> N[Field Confidence Scorer]
-    N --> O[ResultCard UI]
-    O --> P[Export JSON/CSV]
-```
+![Parsify AI Architecture](docs/architecture.jpeg)
 
 ---
 
