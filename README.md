@@ -171,7 +171,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 - Portfolio: [kokilam-portfolio.web.app](https://kokilam-portfolio.web.app/)
 - GitHub: [@kokilamariyayi](https://github.com/kokilamariyayi)
-- LinkedIn: [Kokila M](https://www.linkedin.com/in/kokila-m-aba1572b0/)
+- LinkedIn: [Kokila M](https://www.linkedin.com/in/kokila-m-ai-ds/)
 
 ---
 
