@@ -131,12 +131,6 @@ App runs at **http://localhost:5173**
 
 ---
 
-## Resume Metrics
-
-> Built a multi-stage LLM extraction pipeline achieving structured field parsing across invoice, contract, and resume document types with per-field confidence scoring and audio transcription support.
-
----
-
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.
